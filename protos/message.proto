@@ -1,0 +1,18 @@
+syntax = "proto3";
+package msgapi;
+
+option go_package = "/api";
+
+service ChatMessageService {
+    rpc chat(stream ChatMessageRequest) returns (stream ChatMessageResponse ) {};
+}
+
+message ChatMessageRequest {
+  string id = 1;
+  string message = 2;
+}
+
+message ChatMessageResponse {
+  string id = 1;
+  string message = 2;
+}
