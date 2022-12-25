@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> {
                             var keys = userMessages!.keys.elementAt(index);
                             List<String> messages =
                                 userMessages!.values.elementAt(index);
+                            var id = userMessages![index];
                             return ListTile(
                               title: Text("$keys"),
                               onTap: () {
@@ -62,6 +63,7 @@ class _HomePageState extends State<HomePage> {
                                         builder: (context) => ChatPage(
                                               messages: messages,
                                               keys: keys,
+                                              id : id
                                             )));
                               },
                             );

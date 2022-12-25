@@ -14,22 +14,34 @@ import 'message.pb.dart' as $0;
 export 'message.pb.dart';
 
 class ChatMessageServiceClient extends $grpc.Client {
-  static final _$chat =
-      $grpc.ClientMethod<$0.ChatMessageRequest, $0.ChatMessageResponse>(
-          '/msgapi.ChatMessageService/chat',
-          ($0.ChatMessageRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $0.ChatMessageResponse.fromBuffer(value));
+  static final _$sendMessage =
+      $grpc.ClientMethod<$0.ChatMessage, $0.MessageAck>(
+          '/msgapi.ChatMessageService/SendMessage',
+          ($0.ChatMessage value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.MessageAck.fromBuffer(value));
+  static final _$joinChannel =
+      $grpc.ClientMethod<$0.ConnectionRequest, $0.ChatMessage>(
+          '/msgapi.ChatMessageService/JoinChannel',
+          ($0.ConnectionRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.ChatMessage.fromBuffer(value));
 
   ChatMessageServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseStream<$0.ChatMessageResponse> chat(
-      $async.Stream<$0.ChatMessageRequest> request,
+  $grpc.ResponseFuture<$0.MessageAck> sendMessage(
+      $async.Stream<$0.ChatMessage> request,
       {$grpc.CallOptions? options}) {
-    return $createStreamingCall(_$chat, request, options: options);
+    return $createStreamingCall(_$sendMessage, request, options: options)
+        .single;
+  }
+
+  $grpc.ResponseStream<$0.ChatMessage> joinChannel($0.ConnectionRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
+        _$joinChannel, $async.Stream.fromIterable([request]),
+        options: options);
   }
 }
 
@@ -37,17 +49,29 @@ abstract class ChatMessageServiceBase extends $grpc.Service {
   $core.String get $name => 'msgapi.ChatMessageService';
 
   ChatMessageServiceBase() {
-    $addMethod(
-        $grpc.ServiceMethod<$0.ChatMessageRequest, $0.ChatMessageResponse>(
-            'chat',
-            chat,
-            true,
-            true,
-            ($core.List<$core.int> value) =>
-                $0.ChatMessageRequest.fromBuffer(value),
-            ($0.ChatMessageResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.ChatMessage, $0.MessageAck>(
+        'SendMessage',
+        sendMessage,
+        true,
+        false,
+        ($core.List<$core.int> value) => $0.ChatMessage.fromBuffer(value),
+        ($0.MessageAck value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.ConnectionRequest, $0.ChatMessage>(
+        'JoinChannel',
+        joinChannel_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $0.ConnectionRequest.fromBuffer(value),
+        ($0.ChatMessage value) => value.writeToBuffer()));
   }
 
-  $async.Stream<$0.ChatMessageResponse> chat(
-      $grpc.ServiceCall call, $async.Stream<$0.ChatMessageRequest> request);
+  $async.Stream<$0.ChatMessage> joinChannel_Pre($grpc.ServiceCall call,
+      $async.Future<$0.ConnectionRequest> request) async* {
+    yield* joinChannel(call, await request);
+  }
+
+  $async.Future<$0.MessageAck> sendMessage(
+      $grpc.ServiceCall call, $async.Stream<$0.ChatMessage> request);
+  $async.Stream<$0.ChatMessage> joinChannel(
+      $grpc.ServiceCall call, $0.ConnectionRequest request);
 }

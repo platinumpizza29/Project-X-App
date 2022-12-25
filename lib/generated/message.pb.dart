@@ -9,125 +9,286 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class ChatMessageRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ChatMessageRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msgapi'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
-    ..hasRequiredFields = false
-  ;
+class ChatMessage extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ChatMessage',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'msgapi'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'senderID',
+        protoName: 'senderID')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'channelName',
+        protoName: 'channelName')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'message')
+    ..hasRequiredFields = false;
 
-  ChatMessageRequest._() : super();
-  factory ChatMessageRequest({
-    $core.String? id,
+  ChatMessage._() : super();
+  factory ChatMessage({
+    $core.String? senderID,
+    $core.String? channelName,
     $core.String? message,
   }) {
     final _result = create();
-    if (id != null) {
-      _result.id = id;
+    if (senderID != null) {
+      _result.senderID = senderID;
+    }
+    if (channelName != null) {
+      _result.channelName = channelName;
     }
     if (message != null) {
       _result.message = message;
     }
     return _result;
   }
-  factory ChatMessageRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ChatMessageRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  ChatMessageRequest clone() => ChatMessageRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  ChatMessageRequest copyWith(void Function(ChatMessageRequest) updates) => super.copyWith((message) => updates(message as ChatMessageRequest)) as ChatMessageRequest; // ignore: deprecated_member_use
+  factory ChatMessage.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ChatMessage.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ChatMessage clone() => ChatMessage()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ChatMessage copyWith(void Function(ChatMessage) updates) =>
+      super.copyWith((message) => updates(message as ChatMessage))
+          as ChatMessage; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static ChatMessageRequest create() => ChatMessageRequest._();
-  ChatMessageRequest createEmptyInstance() => create();
-  static $pb.PbList<ChatMessageRequest> createRepeated() => $pb.PbList<ChatMessageRequest>();
+  static ChatMessage create() => ChatMessage._();
+  ChatMessage createEmptyInstance() => create();
+  static $pb.PbList<ChatMessage> createRepeated() => $pb.PbList<ChatMessage>();
   @$core.pragma('dart2js:noInline')
-  static ChatMessageRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessageRequest>(create);
-  static ChatMessageRequest? _defaultInstance;
+  static ChatMessage getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ChatMessage>(create);
+  static ChatMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.String get senderID => $_getSZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set senderID($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
+  $core.bool hasSenderID() => $_has(0);
   @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  void clearSenderID() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get message => $_getSZ(1);
+  $core.String get channelName => $_getSZ(1);
   @$pb.TagNumber(2)
-  set message($core.String v) { $_setString(1, v); }
+  set channelName($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
-  $core.bool hasMessage() => $_has(1);
+  $core.bool hasChannelName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearMessage() => clearField(2);
+  void clearChannelName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get message => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set message($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasMessage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMessage() => clearField(3);
 }
 
-class ChatMessageResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ChatMessageResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'msgapi'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
-    ..hasRequiredFields = false
-  ;
+class MessageAck extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MessageAck',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'msgapi'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
 
-  ChatMessageResponse._() : super();
-  factory ChatMessageResponse({
-    $core.String? id,
-    $core.String? message,
+  MessageAck._() : super();
+  factory MessageAck() => create();
+  factory MessageAck.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory MessageAck.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  MessageAck clone() => MessageAck()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  MessageAck copyWith(void Function(MessageAck) updates) =>
+      super.copyWith((message) => updates(message as MessageAck))
+          as MessageAck; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MessageAck create() => MessageAck._();
+  MessageAck createEmptyInstance() => create();
+  static $pb.PbList<MessageAck> createRepeated() => $pb.PbList<MessageAck>();
+  @$core.pragma('dart2js:noInline')
+  static MessageAck getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MessageAck>(create);
+  static MessageAck? _defaultInstance;
+}
+
+class ConnectionRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'ConnectionRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'msgapi'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'userID',
+        protoName: 'userID')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'channelName',
+        protoName: 'channelName')
+    ..hasRequiredFields = false;
+
+  ConnectionRequest._() : super();
+  factory ConnectionRequest({
+    $core.String? userID,
+    $core.String? channelName,
   }) {
     final _result = create();
-    if (id != null) {
-      _result.id = id;
+    if (userID != null) {
+      _result.userID = userID;
     }
-    if (message != null) {
-      _result.message = message;
+    if (channelName != null) {
+      _result.channelName = channelName;
     }
     return _result;
   }
-  factory ChatMessageResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ChatMessageResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  ChatMessageResponse clone() => ChatMessageResponse()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  ChatMessageResponse copyWith(void Function(ChatMessageResponse) updates) => super.copyWith((message) => updates(message as ChatMessageResponse)) as ChatMessageResponse; // ignore: deprecated_member_use
+  factory ConnectionRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory ConnectionRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  ConnectionRequest clone() => ConnectionRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  ConnectionRequest copyWith(void Function(ConnectionRequest) updates) =>
+      super.copyWith((message) => updates(message as ConnectionRequest))
+          as ConnectionRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static ChatMessageResponse create() => ChatMessageResponse._();
-  ChatMessageResponse createEmptyInstance() => create();
-  static $pb.PbList<ChatMessageResponse> createRepeated() => $pb.PbList<ChatMessageResponse>();
+  static ConnectionRequest create() => ConnectionRequest._();
+  ConnectionRequest createEmptyInstance() => create();
+  static $pb.PbList<ConnectionRequest> createRepeated() =>
+      $pb.PbList<ConnectionRequest>();
   @$core.pragma('dart2js:noInline')
-  static ChatMessageResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessageResponse>(create);
-  static ChatMessageResponse? _defaultInstance;
+  static ConnectionRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ConnectionRequest>(create);
+  static ConnectionRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.String get userID => $_getSZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set userID($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
+  $core.bool hasUserID() => $_has(0);
   @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  void clearUserID() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get message => $_getSZ(1);
+  $core.String get channelName => $_getSZ(1);
   @$pb.TagNumber(2)
-  set message($core.String v) { $_setString(1, v); }
+  set channelName($core.String v) {
+    $_setString(1, v);
+  }
+
   @$pb.TagNumber(2)
-  $core.bool hasMessage() => $_has(1);
+  $core.bool hasChannelName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearMessage() => clearField(2);
+  void clearChannelName() => clearField(2);
 }
 
+class SuccessEmptyResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'SuccessEmptyResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'msgapi'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  SuccessEmptyResponse._() : super();
+  factory SuccessEmptyResponse() => create();
+  factory SuccessEmptyResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SuccessEmptyResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  SuccessEmptyResponse clone() =>
+      SuccessEmptyResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SuccessEmptyResponse copyWith(void Function(SuccessEmptyResponse) updates) =>
+      super.copyWith((message) => updates(message as SuccessEmptyResponse))
+          as SuccessEmptyResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SuccessEmptyResponse create() => SuccessEmptyResponse._();
+  SuccessEmptyResponse createEmptyInstance() => create();
+  static $pb.PbList<SuccessEmptyResponse> createRepeated() =>
+      $pb.PbList<SuccessEmptyResponse>();
+  @$core.pragma('dart2js:noInline')
+  static SuccessEmptyResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SuccessEmptyResponse>(create);
+  static SuccessEmptyResponse? _defaultInstance;
+}
